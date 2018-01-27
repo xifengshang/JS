@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tab切换</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body>
-    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin: auto;
+            width: 608px;
+            height: 300px;
+            border: 1px solid #666;
+        }
+
+        ul {
+            width: 608px;
+            height: 50px;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 150px;
+            height: 50px;
+            border: 1px solid #999;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .cont {
+            width: 150px;
+            height: 50px;
+            float: left;
+            position: absolute;
+            font-size: 20px;
+            display: none;
+        }
+
+        .cont1 {
+            display: block;
+        }
+
+        .cur {
+            background-color: #666;
+        }
+    </style>
+
+    <!--
+	    tab切换
+	-->
+    <div class="box">
+        <ul>
+            <li class="cur">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div class="cont cont1">1</div>
+        <div class="cont">2</div>
+        <div class="cont">3</div>
+        <div class="cont">4</div>
+    </div>
+    <script>
+        $('.box ul li').click(function () {
+            $(this).addClass('cur').siblings().removeClass('cur');
+            $('.cont').eq($(this).index()).show().siblings('.cont').hide();
+        })
+    </script>
 </body>
+
 </html>
