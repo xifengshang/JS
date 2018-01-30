@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>检测浏览器窗口大小</title>
+</head>
+<body>
+    <button onclick="getDimensions()">检测窗口大小</button>
+    <script>
+        var winWidth = 0;
+        var winHeight = 0;
+        // 函数 获取尺寸
+        function getDimensions() {
+            // 获取窗口的宽度
+            if(window.innerWidth) {
+                winHeight = window.innerWidth;
+            } else if((document.body) && (document.body.clientWidth)) {
+                winWidth = document.body.clientWidth;
+            }
+            // 获取窗口高度
+            if(window.innerHeight) {
+                winHeight = window.innerHeight;
+            } else if((document.body) && (document.body.clientHeight)) {
+                winHeight = document.body.clientHeight;
+            }
+            // 通过深入Document内部对body进行检测，获取窗口大小
+            if(document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+                winWidth = document.documentElement.clientWidth;
+                winHeight = document.documentElement.clientHeight;
+            }
+            console.log('宽：'+winWidth,'高：'+winHeight);
+        }
+    </script>
+</body>
+</html>
