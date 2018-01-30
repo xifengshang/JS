@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断浏览器类型</title>
+</head>
+
+<body>
+    <script>
+        function getBrowserType() {
+            var userAgent = navigator.userAgent; // 取得浏览器的userAgent字符串
+            var version = '';
+            var browsers = navigator.appName;
+            var b_version = navigator.appVersion;
+            var version = b_version.split(";");
+            var trim_Version = (version[1]) ? version[1].replace(/[ ]/g, "") : version[0].replace(/[ ]/g, "");
+            var isOpera = userAgent.indexOf("Opera") > -1;
+            if (userAgent.indexOf("Opera") > -1) {
+                return "Opera"
+            } else if (userAgent.indexOf("Firefox") > -1) {
+                return "FF";
+            } else if (userAgent.indexOf("Chrome") > -1) {
+                return "Chrome";
+            } else if (userAgent.indexOf("Safari") > -1) {
+                return "Safari";
+            } else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+                if (browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE6.0") {
+                    version = "IE 6";
+                } else if (browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE7.0") {
+                    version = "IE 7";
+                } else if (browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+                    version = "IE 8";
+                } else if (browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE9.0") {
+                    version = "IE 9";
+                } else if (browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE10.0") {
+                    version = "IE 10";
+                }
+            } else if (browsers = "Netscape" && trim_Version == "WOW64") {
+                version = "IE 11";
+            }
+            return version;
+        }
+        console.log(getBrowserType());
+    </script>
+</body>
+
+</html>
